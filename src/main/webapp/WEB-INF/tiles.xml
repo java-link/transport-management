@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="base.definition"
+        template="/WEB-INF/pages/layout.jsp">
+        <put-attribute name="title" value="Transport management system" />
+        <put-attribute name="header" value="/WEB-INF/pages/header.jsp" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/pages/footer.jsp" />
+    </definition>
+ 
+  <definition name="loginsuccess" extends="base.definition">
+        <put-attribute name="title" value="Transport management system - Welcome" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="body" value="" />
+    </definition>
+    
+    <!-- <definition name="loginForm" extends="base.definition">
+        <put-attribute name="title" value="Review Board [Login]" />
+        <put-attribute name="body" value="/WEB-INF/jsp/loginform.jsp" />
+    </definition>
+    
+     <definition name="loginError" extends="base.definition">
+        <put-attribute name="title" value="Review Board [Login error]" />
+        <put-attribute name="body" value="/WEB-INF/jsp/loginerror.jsp" />
+    </definition>
+    
+    <definition name="loginsuccess" extends="base.definition">
+        <put-attribute name="title" value="Review Board - Welcome to Review Board" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/loginsuccess.jsp" />
+    </definition>
+
+    <definition name="apperror" extends="base.definition">
+        <put-attribute name="title" value="Review Board [Application Error]" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/error.jsp" />
+    </definition>
+    
+    <definition name="configform" extends="loginsuccess">
+        <put-attribute name="title" value="Review Board [Configuration]" />
+        <put-attribute name="body" value="/WEB-INF/jsp/config/config.jsp" />
+    </definition>
+
+    <definition name="teamform" extends="loginsuccess">
+        <put-attribute name="title" value="Review Board [Configuration - Team]" />
+        <put-attribute name="body" value="/WEB-INF/jsp/config/team.jsp" />
+    </definition>
+    
+    <definition name="taskform" extends="loginsuccess">
+        <put-attribute name="title" value="Review Board [Configuration - Task]" />
+        <put-attribute name="body" value="/WEB-INF/jsp/config/task.jsp" />
+    </definition>
+  
+     <definition name="projectform" extends="loginsuccess">
+        <put-attribute name="title" value="Review Board [Configuration - Project]" />
+        <put-attribute name="body" value="/WEB-INF/jsp/config/project.jsp" />
+    </definition>
+    
+    <definition name="userform" extends="loginsuccess">
+        <put-attribute name="title" value="Review Board [Configuration - User]" />
+        <put-attribute name="body" value="/WEB-INF/jsp/config/user.jsp" />
+    </definition>
+    
+    <definition name="iterationform" extends="loginsuccess">
+        <put-attribute name="title" value="Review Board [Configuration - Iteration]" />
+        <put-attribute name="body" value="/WEB-INF/jsp/config/iteration.jsp" />
+    </definition>
+    
+     <definition name="reviewrequest" extends="loginsuccess">
+        <put-attribute name="title" value="Review Request" />
+        <put-attribute name="body" value="/WEB-INF/jsp/review/reviewrequest.jsp" />
+    </definition>
+    
+    <definition name="reviewResponse" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Response" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/review/reviewResponse.jsp" />
+    </definition>
+    
+    <definition name="reviewrequestsuccessful" extends="loginsuccess">
+        <put-attribute name="title" value="Review Request" />
+        <put-attribute name="body" value="/WEB-INF/jsp/review/reviewrequestsuccess.jsp" />
+    </definition>
+    
+    <definition name="incomingSummary" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Board [Incoming Requests]" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/review/incomingRequestsSummary.jsp" />
+    </definition>
+    
+    <definition name="reviewResponseDetailForm" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Board [Finding Details]" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/review/reviewFindingDetails.jsp" />
+    </definition>
+    
+    <definition name="outgoingSummary" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Board [Outgoing Requests]" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/review/outgoingRequestsSummary.jsp" />
+    </definition>
+    
+   
+     <definition name="incomingRequestDetail" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Board [Incoming Requests Detail]" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/review/incomingRequestDetail.jsp" />
+    </definition>
+    
+     <definition name="outgoingRequestDetail" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Board [Outgoing Requests Detail]" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/review/outgoingRequestDetail.jsp" />
+    </definition>
+    
+    <definition name="reviewCommentForm" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Board [Reply]" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/review/addReviewComment.jsp" />
+    </definition>
+    
+    <definition name="reportRequest" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Board [Reports]" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/report/reportMain.jsp" />
+    </definition>
+
+    <definition name="viewReviewReport" extends="loginsuccess">
+    	<put-attribute name="title" value="Review Board [Reports]" />
+    	<put-attribute name="body" value="/WEB-INF/jsp/report/viewReviewReport.jsp" />
+    </definition> -->
+    
+</tiles-definitions>
