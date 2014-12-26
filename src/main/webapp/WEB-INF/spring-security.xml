@@ -13,9 +13,9 @@
 	<authentication-manager>
 	  <authentication-provider>
 	    <user-service>
-			<user name="shishir" password="shishir" authorities="ROLE_USER" />
-			<user name="kiran" password="kiran" authorities="ROLE_USER" />
-			<user name="sachin" password="sachin" authorities="ROLE_USER" />
+			<user name="jainnshi" password="shishir" authorities="ROLE_USER, ROLE_ADMIN" />
+			<user name="patilkir" password="kiran" authorities="ROLE_USER" />
+			<user name="survesac" password="sachin" authorities="ROLE_USER" />
 	    </user-service>
 	  </authentication-provider>
 	</authentication-manager>
