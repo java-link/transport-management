@@ -6,23 +6,12 @@
 
 <h1>Transport management</h1>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-<script>
-    	function Hello($scope, $http) {
-    	    $http.get('http://localhost:8080/transport-management/springcontent.json').
-    	        success(function(data) {
-    	            $scope.user = data;
-    	        });
-    	}
-    	</script>
-
-<div id="userDetail" align="right">
+<div id="userDetail" align="right" ng-controller="Hello">
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name} | <a
+		<h4>
+			Welcome : {{user.userName}} | <a
 				href="<c:url value="/j_spring_security_logout" />"> Logout</a>
-		</h2>
+		</h4>
 	</c:if>
 
 </div>
