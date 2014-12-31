@@ -1,5 +1,7 @@
 package com.javaplus.app.transport.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -8,19 +10,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.javaplus.app.transport.dao.UserDao;
+
 @Controller
 public class SpringContentController {
+	
+	private UserDao userDao;
+	
+	@Autowired
+	public SpringContentController(UserDao userDao) {
+		this.userDao = userDao;
+	}
+	
 	@Autowired UserDetails userDetails;
 	@RequestMapping(value="/springcontent**",
 			method=RequestMethod.GET,produces={"application/xml", "application/json"})
     @ResponseStatus(HttpStatus.OK)
 	public @ResponseBody
-	UserDetails getUser() {
-		UserDetails userDetails = new UserDetails();
-		userDetails.setId(501);
-		userDetails.setUserName("Shishir Jain");
-		userDetails.setEmailId("jainshi@gmail.com");
-		return userDetails;
+	UserDetails getUser(final Principal principal) {
+		final String userId = principal.getName();
+		return userDao.getUserDetails(userId);
 	}
 	
 }
