@@ -3,8 +3,11 @@ package com.javaplus.app.transport.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import com.javaplus.app.transport.controller.UserDetails;
 
+@Component(value="userDao")
 public class UserDao {
 	
 	private static Map<String, UserDetails> userDetailsMap = new HashMap<>();
@@ -17,8 +20,6 @@ public class UserDao {
 		userDetailsMap.put("jainnshi", shishir);
 		userDetailsMap.put("survesac", sachin);
 		userDetailsMap.put("patilkir", kiran);
-		
-		
 	}
 	
 	public UserDetails getUserDetails(String loginId) {

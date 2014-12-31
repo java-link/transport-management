@@ -14,15 +14,22 @@ import com.javaplus.app.transport.dao.UserDao;
 
 @Controller
 public class SpringContentController {
+	
+	private UserDao userDao;
+	
+	@Autowired
+	public SpringContentController(UserDao userDao) {
+		this.userDao = userDao;
+	}
+	
 	@Autowired UserDetails userDetails;
 	@RequestMapping(value="/springcontent**",
 			method=RequestMethod.GET,produces={"application/xml", "application/json"})
     @ResponseStatus(HttpStatus.OK)
 	public @ResponseBody
-	UserDetails getUser(Principal principal) {
-		String userId = principal.getName();
-		UserDao dao = new UserDao();
-		return dao.getUserDetails(userId);
+	UserDetails getUser(final Principal principal) {
+		final String userId = principal.getName();
+		return userDao.getUserDetails(userId);
 	}
 	
 }
