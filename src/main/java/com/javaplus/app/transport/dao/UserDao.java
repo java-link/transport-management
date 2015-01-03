@@ -1,29 +1,11 @@
 package com.javaplus.app.transport.dao;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import org.springframework.stereotype.Component;
+import com.javaplus.app.transport.model.User;
 
-import com.javaplus.app.transport.controller.UserDetails;
-
-@Component(value="userDao")
-public class UserDao {
+public interface UserDao {
 	
-	private static Map<String, UserDetails> userDetailsMap = new HashMap<>();
-	
-	static {
-		UserDetails shishir = new UserDetails(501, "jainnshi", "Shishir Jain", "jainshi@gmail.com");
-		UserDetails sachin = new UserDetails(502, "survesac", "Sachin Surve", "survesachin@gmail.com");
-		UserDetails kiran = new UserDetails(503, "patilkir", "Kiran Patil", "patilkiran@gmail.com");
-		
-		userDetailsMap.put("jainnshi", shishir);
-		userDetailsMap.put("survesac", sachin);
-		userDetailsMap.put("patilkir", kiran);
-	}
-	
-	public UserDetails getUserDetails(String loginId) {
-		return userDetailsMap.get(loginId);
-	}
-	
+	List<User> list();
+	User findUser(String userId);
 }

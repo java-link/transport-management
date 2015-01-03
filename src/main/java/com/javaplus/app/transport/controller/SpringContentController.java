@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.javaplus.app.transport.dao.UserDao;
+import com.javaplus.app.transport.dao.UserInfoDao;
 
 @Controller
 public class SpringContentController {
 	
-	private UserDao userDao;
+	private UserInfoDao userDao;
 	
 	@Autowired
-	public SpringContentController(UserDao userDao) {
+	public SpringContentController(UserInfoDao userDao) {
 		this.userDao = userDao;
 	}
 	
