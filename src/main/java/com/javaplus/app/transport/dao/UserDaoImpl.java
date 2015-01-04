@@ -18,8 +18,7 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	 
-    public UserDaoImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
+    public UserDaoImpl() {
     }
  
     @Override
@@ -38,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
 	public User findUser(final String userId) {
     	Session session = sessionFactory.getCurrentSession();
-        List<User> list = session.createQuery("from User u where u.id = :userId")
+        List<User> list = session.createQuery("from User u where u.userId = :userId")
             .setParameter("userId", userId)
             .list();
         return list.size() > 0 ?(User)list.get(0): null;

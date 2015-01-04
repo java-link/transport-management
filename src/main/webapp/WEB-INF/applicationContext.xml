@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans
+    PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- Import the beans from the dispatcher servlet context. -->
+	<!-- <import resource="dispatcher-servlet.xml" /> -->
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="WEB-INF/applicationContext.properties" />
+	</bean>
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>resources/application</value>
+				<value>resources/errors</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- ======================= DB DEFINITIONS ===================== -->
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- <property name="dataSource" ref="dartDataSource"/> -->
+
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.javaplus.app.transport.model.User</value>
+			</list>
+		</property>
+		<!-- <property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:db/hbm</value>
+			</list>
+		</property> -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.connection.driver_class">${transport.db.driverClassName}</prop>
+				<prop key="hibernate.connection.url">${transport.db.databaseurl}</prop>
+				<prop key="hibernate.connection.username">${transport.db.username}</prop>
+				<prop key="hibernate.connection.password">${transport.db.password}</prop>
+				<prop key="hibernate.dialect">${transport.db.dialect}</prop>
+				<prop key="hibernate.show_sql">${transport.db.hibernate.show_sql}</prop>
+				<prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
+				<prop key="hibernate.use_outer_join">true</prop>
+				<prop key="hibernate.statement_cache.size">2000</prop>
+				<prop key="hibernate.max_fetch_depth">5</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<!-- Set the release mode to auto, so that the DB connections are released 
+					as soon as the transaction is complete. -->
+				<prop key="hibernate.connection.release_mode">auto</prop>
+
+				<!-- Cache Settings. -->
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<!-- <prop key="hibernate.cache.provider_class">com.opensymphony.oscache.hibernate.OSCacheProvider</prop> -->
+
+				<!-- This to avoid "java.lang.NoClassDefFoundError: antlr/ANTLRException" 
+					while creating hql query -->
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</prop>
+				
+				<prop key="hibernate.c3p0.min_size">1</prop>
+				<prop key="hibernate.c3p0.max_size">5</prop>
+				<prop key="hibernate.c3p0.timeout">3000</prop>
+				<prop key="hibernate.c3p0.max_statements">50</prop>
+				<prop key="hibernate.c3p0.idle_test_period">30000</prop>
+				
+				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+				<prop key="hibernate.hbm2ddl.import_files">classes:db/create_table.sql</prop>
+			</props>
+		</property>
+
+		<!-- <property name="lobHandler" ref="defaultLobHandler" /> -->
+	</bean>
+
+	<bean id="defaultLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" />
+
+	<!-- =================== TRANSACTION ====================== -->
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="baseTransactionProxy"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="save*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="merge*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="create*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="add*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="assign*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="associate*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="unassign*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="login*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="logout*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="*validate*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="set*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED,-ApplicationException</prop>
+				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="search*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="is*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="parse*">PROPAGATION_REQUIRED,readOnly</prop>
+			</props>
+		</property>
+
+	</bean>
+
+</beans>
+ 
