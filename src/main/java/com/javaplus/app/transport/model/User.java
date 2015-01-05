@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USERS", schema = "TEST")
+@Table(name = "USERS")
 public class User extends BaseModel {
 	private String userId;
 	private String userName;

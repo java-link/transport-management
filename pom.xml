@@ -12,7 +12,8 @@
 		<tiles.version>3.0.5</tiles.version>
 		<hibernate.version>4.3.7.Final</hibernate.version>
 		<jstl.version>1.2</jstl.version>
-		<derby.version>10.10.1.1</derby.version>
+		<derby.version>10.11.1.1</derby.version>
+		<jettyVersion>9.2.7-SNAPSHOT</jettyVersion>
 	</properties>
 
 	<dependencies>
@@ -61,7 +62,11 @@
 			<artifactId>spring-tx</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
@@ -128,7 +133,7 @@
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		
+
 		<!-- Tiles -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -186,9 +191,17 @@
 			<version>2.3.1</version>
 			<scope>provided</scope>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>main/resources/db</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -197,6 +210,14 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+  				<artifactId>jetty-maven-plugin</artifactId>
+  				<version>9.0.5.v20130815</version>
+				<configuration>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
 				</configuration>
 			</plugin>
 		</plugins>

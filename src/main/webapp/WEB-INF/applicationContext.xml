@@ -1,29 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans
-    PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<beans>
 	<!-- Import the beans from the dispatcher servlet context. -->
 	<!-- <import resource="dispatcher-servlet.xml" /> -->
 
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="WEB-INF/applicationContext.properties" />
-	</bean>
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>resources/application</value>
-				<value>resources/errors</value>
-			</list>
-		</property>
+	<!-- <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<property name="url"
+			value="jdbc:derby:test;create=true" />
+		<property name="username" value="test" />
+		<property name="password" value="test" />
 	</bean>
 
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="org.hibernate.dialect.DerbyDialect" />
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		
+	</bean>
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory" />
+    <property name="dataSource" ref="dataSource" />
+  </bean> -->
 
 	<!-- ======================= DB DEFINITIONS ===================== -->
 
+<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="WEB-INF/applicationContext.properties" />
+	</bean>
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -73,7 +93,7 @@
 				<prop key="hibernate.c3p0.idle_test_period">30000</prop>
 				
 				<prop key="hibernate.hbm2ddl.auto">create-drop</prop>
-				<prop key="hibernate.hbm2ddl.import_files">classes:db/create_table.sql</prop>
+				<prop key="hibernate.hbm2ddl.import_files">/create_table.sql</prop>
 			</props>
 		</property>
 
