@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.javaplus.app.transport.controller.UserDetails;
 
-@Component(value="userDao")
+@Component(value="userInfoDao")
 public class UserInfoDao {
 	
 	private static Map<String, UserDetails> userDetailsMap = new HashMap<>();

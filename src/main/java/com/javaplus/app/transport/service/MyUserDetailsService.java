@@ -12,10 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.javaplus.app.transport.dao.UserDao;
 
-@Qualifier("MyUserDetailsService")
 public class MyUserDetailsService implements UserDetailsService{
 	
 	@Autowired
+	@Qualifier(value="userDao")
 	private UserDao userDao;
 	//private EntityManager entityManager;
     
