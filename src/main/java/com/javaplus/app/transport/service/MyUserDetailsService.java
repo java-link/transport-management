@@ -17,14 +17,8 @@ public class MyUserDetailsService implements UserDetailsService{
 	@Autowired
 	@Qualifier(value="userDao")
 	private UserDao userDao;
-	//private EntityManager entityManager;
-    
-	/*@PersistenceContext
-    public void setEntityManager(EntityManager newEm){
-        this.entityManager = newEm;
-    }
-*/
-    public UserDetails loadUserByUsername(String username){
+
+	public UserDetails loadUserByUsername(String username){
     	com.javaplus.app.transport.model.User user = userDao.findUser(username);
     	
     	if (user == null) {
@@ -40,10 +34,5 @@ public class MyUserDetailsService implements UserDetailsService{
     	List<GrantedAuthority> roles = new ArrayList<>();
     	roles.add(role);
     	return new User(user.getUserId(), user.getPassword(), roles);
-        /*// assuming that you have a User class that implements UserDetails
-        return entityManager.createQuery(" from User where userId = :username", User.class)
-                            .setParameter("userId", username)
-                            .getSingleResult();*/
-
     }
 }

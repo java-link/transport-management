@@ -22,8 +22,6 @@ http://www.springframework.org/schema/util/spring-util.xsd"
 	
 	<context:component-scan base-package="com.javaplus.app.transport" />
 
-	<bean id="userDetails" class="com.javaplus.app.transport.controller.UserDetails" />
-
 	<mvc:annotation-driven content-negotiation-manager="contentManager" />
 
 	<bean id="contentManager"
