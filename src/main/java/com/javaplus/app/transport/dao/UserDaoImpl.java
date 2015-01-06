@@ -6,15 +6,17 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.javaplus.app.transport.model.User;
 
 @Repository
+@Qualifier("userDao")
 public class UserDaoImpl implements UserDao {
 	
 	@Autowired
-	private EntityManager entityManager;;
+	private EntityManager entityManager;
 	 
     public UserDaoImpl() {
     }

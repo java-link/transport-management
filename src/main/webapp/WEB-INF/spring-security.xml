@@ -9,25 +9,31 @@
 		<intercept-url pattern="/**" access="ROLE_USER" />
 	</http>
 
-	<!-- <authentication-manager> <authentication-provider> <user-service> <user 
-		name="jainnshi" password="shishir" authorities="ROLE_USER, ROLE_ADMIN" /> 
-		<user name="patilkir" password="kiran" authorities="ROLE_USER" /> <user name="survesac" 
-		password="sachin" authorities="ROLE_USER" /> </user-service> </authentication-provider> 
-		</authentication-manager> -->
+	<!-- <authentication-manager>
+	<authentication-provider>
+		<user-service>
+			<user name="jainnshi" password="shishir" authorities="ROLE_USER, ROLE_ADMIN" />
+			<user name="patilkir" password="kiran" authorities="ROLE_USER" />
+			<user name="survesac" password="sachin" authorities="ROLE_USER" />
+		</user-service>
+	</authentication-provider>
+</authentication-manager> -->
 
-	<beans:bean id="testdataSource"
+	<!-- <beans:bean id="testdataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<beans:property name="driverClassName" value="org.apache.derby.jdbc.EmbeddedDriver" />
+		<beans:property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver" />
 		<beans:property name="url" value="jdbc:derby:/home/java-link/databases/testDb" />
-		<beans:property name="username" value="test" />
-		<beans:property name="password" value="test" />
-	</beans:bean>
+	</beans:bean> -->
+
+<!-- <beans:import resource="dispatcher-servlet.xml" /> -->
+<beans:bean id="MyUserDetailsService" class="com.javaplus.app.transport.service.MyUserDetailsService" >
+</beans:bean>
 
 	<authentication-manager>
-		<authentication-provider>
-			<jdbc-user-service data-source-ref="testdataSource"
+		<authentication-provider user-service-ref="MyUserDetailsService">
+			<!-- <jdbc-user-service data-source-ref="testdataSource"
 				users-by-username-query="select user_id, password from users where user_id=?"
-				authorities-by-username-query="select u1.user_id, u2.role from users u1, user_role u2 where u1.user_id = u2.user_id and u1.user_id =?" />
+				authorities-by-username-query="select u1.user_id, u2.role from users u1, user_role u2 where u1.user_id = u2.user_id and u1.user_id =?" /> -->
 		</authentication-provider>
 	</authentication-manager>
 
