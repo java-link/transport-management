@@ -34,7 +34,6 @@ public class MyUserDetailsService implements UserDetailsService{
 			
 			@Override
 			public String getAuthority() {
-				// TODO Auto-generated method stub
 				return "ROLE_USER";
 			}
 		};
