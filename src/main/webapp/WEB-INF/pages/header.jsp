@@ -22,6 +22,6 @@
 			Welcome : {{user.userName}} (Id: {{user.id}}) | <a
 				href="<c:url value="/j_spring_security_logout" />"> Logout</a>
 		</h4>
-		{{user.emailId}}
+		{{user.email}}
 	</c:if>
 </div>

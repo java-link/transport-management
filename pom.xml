@@ -197,8 +197,12 @@
 
 	<build>
 		<resources>
+		<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
 			<resource>
-				<directory>main/resources/db</directory>
+				<directory>src/main/resources/db</directory>
 				<filtering>true</filtering>
 			</resource>
 		</resources>
