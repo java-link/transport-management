@@ -11,28 +11,38 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.javaplus.app.transport.dao.UserDao;
+import com.javaplus.app.transport.security.constants.RoleType;
+import com.javaplus.app.transport.security.model.LoginUser;
 
-public class MyUserDetailsService implements UserDetailsService{
+public class UserLoginService implements UserDetailsService{
 	
 	@Autowired
 	@Qualifier(value="userDao")
 	private UserDao userDao;
 
 	public UserDetails loadUserByUsername(String username){
-    	com.javaplus.app.transport.model.User user = userDao.findUser(username);
+    	LoginUser user = userDao.findLoginUser(username);
     	
     	if (user == null) {
     		return null;
     	}
-    	GrantedAuthority role = new GrantedAuthority() {
-			
-			@Override
-			public String getAuthority() {
-				return "ROLE_USER";
-			}
-		};
-    	List<GrantedAuthority> roles = new ArrayList<>();
-    	roles.add(role);
-    	return new User(user.getUserId(), user.getPassword(), roles);
+    	
+    	return new User(user.getUserId(), user.getPassword(), populateRoles(user));
     }
+	
+	@SuppressWarnings("serial")
+	List<GrantedAuthority> populateRoles(final LoginUser user) {
+		final List<GrantedAuthority> roles = new ArrayList<>();
+		for (final RoleType role : user.getRoles()) {
+			roles.add(new GrantedAuthority() {
+				
+				@Override
+				public String getAuthority() {
+					return role.getName();
+				}
+			});
+		}
+		return roles;
+	}
+	
 }
