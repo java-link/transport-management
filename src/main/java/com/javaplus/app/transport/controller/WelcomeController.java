@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class WelcomeController {
 
  
-	@RequestMapping(value = {"/", "/welcome**"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/**",  "/welcome**"}, method = RequestMethod.GET)
 	public String adminPage(Principal principal) {
-		return "loginsuccess";
+		return "loginPage";
 	}
+	
+	@RequestMapping(value = {"/secured**", "/loginPage"}, method = RequestMethod.GET)
+    public String loginPage() {
+        return "loginsuccess";
+    }
 	
 }

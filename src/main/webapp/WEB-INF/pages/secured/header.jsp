@@ -19,8 +19,7 @@
 <div id="userDetail" align="right" ng-controller="Hello">
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h4>
-			Welcome : {{user.userName}} (Id: {{user.id}}) | <a
-				href="<c:url value="/j_spring_security_logout" />"> Logout</a>
+			Welcome : {{user.userName}} (Id: {{user.id}}) | <a href="${pageContext.request.contextPath}/loginPage">Logout</a>
 		</h4>
 		{{user.email}}
 	</c:if>

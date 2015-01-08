@@ -2,18 +2,25 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
     <definition name="base.definition"
-        template="/WEB-INF/pages/layout.jsp">
+        template="/WEB-INF/pages/secured/layout.jsp">
         <put-attribute name="title" value="Transport management system" />
-        <put-attribute name="header" value="/WEB-INF/pages/header.jsp" />
+        <put-attribute name="header" value="/WEB-INF/pages/secured/header.jsp" />
         <put-attribute name="menu" value="" />
         <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/pages/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/pages/secured/footer.jsp" />
     </definition>
  
   <definition name="loginsuccess" extends="base.definition">
         <put-attribute name="title" value="Transport management system - Welcome" />
         <put-attribute name="menu" value="" />
         <put-attribute name="body" value="" />
+    </definition>
+    
+    <definition name="loginPage" extends="base.definition">
+        <put-attribute name="title" value="Transport management system - Login" />
+        <put-attribute name="header" value="" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="body" value="/WEB-INF/pages/loginPage.jsp" />
     </definition>
     
     <!-- <definition name="loginForm" extends="base.definition">

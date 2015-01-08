@@ -6,34 +6,20 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/**" access="ROLE_USER" />
+		<intercept-url pattern="/secured/*" access="ROLE_USER" />
+		<remember-me />
+		<!-- <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?error=true" /> -->
+		
+		 <form-login login-processing-url="/login" login-page="/loginPage"
+            username-parameter="username" password-parameter="password"
+			default-target-url="/secured" authentication-failure-url="/login?auth=fail" />
+		<logout logout-url="/logout" logout-success-url="/loginPage" />
 	</http>
 
-	<!-- <authentication-manager>
-	<authentication-provider>
-		<user-service>
-			<user name="jainnshi" password="shishir" authorities="ROLE_USER, ROLE_ADMIN" />
-			<user name="patilkir" password="kiran" authorities="ROLE_USER" />
-			<user name="survesac" password="sachin" authorities="ROLE_USER" />
-		</user-service>
-	</authentication-provider>
-</authentication-manager> -->
-
-	<!-- <beans:bean id="testdataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<beans:property name="driverClassName" value="org.apache.derby.jdbc.ClientDriver" />
-		<beans:property name="url" value="jdbc:derby:/home/java-link/databases/testDb" />
-	</beans:bean> -->
-
-<!-- <beans:import resource="dispatcher-servlet.xml" /> -->
-<beans:bean id="loginService" class="com.javaplus.app.transport.service.UserLoginService" >
-</beans:bean>
+	<beans:bean id="loginService" class="com.javaplus.app.transport.service.UserLoginService" />
 
 	<authentication-manager>
 		<authentication-provider user-service-ref="loginService">
-			<!-- <jdbc-user-service data-source-ref="testdataSource"
-				users-by-username-query="select user_id, password from users where user_id=?"
-				authorities-by-username-query="select u1.user_id, u2.role from users u1, user_role u2 where u1.user_id = u2.user_id and u1.user_id =?" /> -->
 		</authentication-provider>
 	</authentication-manager>
 
