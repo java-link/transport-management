@@ -10,6 +10,13 @@
                 Reason : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
          </div>
     </c:if>
+    
+    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+      <font color="red">
+        Your login attempt was not successful due to <br/><br/>
+        <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+      </font>
+</c:if>
 	<form action="${pageContext.request.contextPath}/login" method="post"<%-- method="POST" action="<c:url value="/j_spring_security_check" />" --%>>
 		<table>
 			<tr>

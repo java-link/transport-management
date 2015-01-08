@@ -11,9 +11,9 @@
 		<!-- <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?error=true" /> -->
 		
 		 <form-login login-processing-url="/login" login-page="/loginPage"
-            username-parameter="username" password-parameter="password"
+            username-parameter="username" password-parameter="password" 
 			default-target-url="/secured" authentication-failure-url="/login?auth=fail" />
-		<logout logout-url="/logout" logout-success-url="/loginPage" />
+		<logout logout-url="/logout" logout-success-url="/" />
 	</http>
 
 	<beans:bean id="loginService" class="com.javaplus.app.transport.service.UserLoginService" />

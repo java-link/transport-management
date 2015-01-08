@@ -20,4 +20,8 @@ public class WelcomeController {
         return "loginsuccess";
     }
 	
+	@RequestMapping(value = "/logoutPage", method = RequestMethod.GET)
+    public String logoutPage() {
+        return "/logoutPage";
+    }
 }

@@ -16,11 +16,8 @@
         <put-attribute name="body" value="" />
     </definition>
     
-    <definition name="loginPage" extends="base.definition">
+    <definition name="loginPage" template="/WEB-INF/pages/loginPage.jsp">
         <put-attribute name="title" value="Transport management system - Login" />
-        <put-attribute name="header" value="" />
-        <put-attribute name="menu" value="" />
-        <put-attribute name="body" value="/WEB-INF/pages/loginPage.jsp" />
     </definition>
     
     <!-- <definition name="loginForm" extends="base.definition">

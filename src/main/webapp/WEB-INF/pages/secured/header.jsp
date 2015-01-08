@@ -19,7 +19,7 @@
 <div id="userDetail" align="right" ng-controller="Hello">
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
 		<h4>
-			Welcome : {{user.userName}} (Id: {{user.id}}) | <a href="${pageContext.request.contextPath}/loginPage">Logout</a>
+			Welcome : {{user.userName}} (Id: {{user.id}}) | <a href="${pageContext.request.contextPath}/logout">Logout</a>
 		</h4>
 		{{user.email}}
 	</c:if>
