@@ -10,13 +10,17 @@
         <put-attribute name="footer" value="/WEB-INF/pages/secured/footer.jsp" />
     </definition>
  
-  <definition name="loginsuccess" extends="base.definition">
+  <definition name="secured/loginsuccess" extends="base.definition">
         <put-attribute name="title" value="Transport management system - Welcome" />
         <put-attribute name="menu" value="" />
         <put-attribute name="body" value="" />
     </definition>
     
     <definition name="loginPage" template="/WEB-INF/pages/loginPage.jsp">
+        <put-attribute name="title" value="Transport management system - Login" />
+    </definition>
+    
+    <definition name="loginFail" template="/WEB-INF/pages/loginPage.jsp?auth=fail">
         <put-attribute name="title" value="Transport management system - Login" />
     </definition>
     

@@ -6,13 +6,11 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/secured/*" access="ROLE_USER" />
-		<remember-me />
-		<!-- <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?error=true" /> -->
-		
+		<intercept-url pattern="/secured/**" access="ROLE_USER" />
+				<!-- -->
 		 <form-login login-processing-url="/login" login-page="/loginPage"
             username-parameter="username" password-parameter="password" 
-			default-target-url="/secured" authentication-failure-url="/login?auth=fail" />
+			 default-target-url="/secured" authentication-failure-url="/loginFail" />
 		<logout logout-url="/logout" logout-success-url="/" />
 	</http>
 

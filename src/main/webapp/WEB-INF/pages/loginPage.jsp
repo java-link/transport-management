@@ -17,7 +17,7 @@
         <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
       </font>
 </c:if>
-	<form action="${pageContext.request.contextPath}/login" method="post"<%-- method="POST" action="<c:url value="/j_spring_security_check" />" --%>>
+	<form action="${pageContext.request.contextPath}/login" method="post">
 		<table>
 			<tr>
 				<td align="right">Username</td>
